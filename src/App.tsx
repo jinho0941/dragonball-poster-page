@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import './App.css'
+import { FullScrollPage } from './components/full-page'
 
 function App() {
   return (
-    <>
-      <div className='text-rose-500 text-2xl'>hello</div>
-    </>
+    <FullScrollPage>
+      <div>hello</div>
+      <div>hello</div>
+    </FullScrollPage>
   )
 }
 
