@@ -35,6 +35,7 @@ export const FullScrollPage = ({ children }: Props) => {
     })
   }
 
+  console.log('스크롤 이벤트')
   useEffect(() => {
     const handleWheel = (event: WheelEvent) => {
       const maxPage = pageRefs.current.length - 1
