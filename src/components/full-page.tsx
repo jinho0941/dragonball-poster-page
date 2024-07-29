@@ -32,11 +32,17 @@ export const FullScrollPage = ({ children }: Props) => {
     })
   }
   const handleWheel = (event: WheelEvent) => {
-    if (isScrolling) return
     const maxPage = pageRefs.current.length - 1
     const minPage = 0
-    let nextPage = currentPageNum
+    if (
+      (event.deltaY > 0 && currentPageNum === maxPage) ||
+      (event.deltaY < 0 && currentPageNum === minPage)
+    ) {
+      return
+    }
+    if (isScrolling) return
 
+    let nextPage = currentPageNum
     if (event.deltaY > 0) {
       nextPage = Math.min(currentPageNum + 1, maxPage)
     } else if (event.deltaY < 0) {
