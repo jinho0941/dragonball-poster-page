@@ -1,5 +1,4 @@
-import React, { cloneElement } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import React, { cloneElement, useEffect, useRef, useState } from 'react'
 
 type Props = {
   children: React.ReactNode
@@ -8,8 +7,8 @@ type Props = {
 export const FullScrollPage = ({ children }: Props) => {
   const mainRef = useRef<HTMLDivElement>(null)
   const pageRefs = useRef<HTMLDivElement[]>([])
-
   const [currentPageNum, setCurrentPageNum] = useState<number>(0)
+  const [isScrolling, setIsScrolling] = useState<boolean>(false)
 
   const childrenArray = React.Children.toArray(children)
 
@@ -26,40 +25,52 @@ export const FullScrollPage = ({ children }: Props) => {
 
   const handlePointClick = (pageNum: number) => {
     if (!mainRef.current) return
-    setTimeout(() => {
-      setCurrentPageNum(pageNum)
-    }, 500)
+    setCurrentPageNum(pageNum)
     mainRef.current.scrollTo({
       top: pageRefs.current[pageNum].offsetTop,
       behavior: 'smooth',
     })
   }
+  const handleWheel = (event: WheelEvent) => {
+    if (isScrolling) return
+    const maxPage = pageRefs.current.length - 1
+    const minPage = 0
+    let nextPage = currentPageNum
 
-  console.log('스크롤 이벤트')
-  useEffect(() => {
-    const handleWheel = (event: WheelEvent) => {
-      const maxPage = pageRefs.current.length - 1
-      const minPage = 0
-      let nextPage = currentPageNum
-
-      if (event.deltaY > 0) {
-        nextPage = Math.min(currentPageNum + 1, maxPage)
-      } else if (event.deltaY < 0) {
-        nextPage = Math.max(currentPageNum - 1, minPage)
-      }
-      mainRef.current?.scrollTo({
-        top: pageRefs.current[nextPage].offsetTop,
-        behavior: 'smooth',
-      })
-
-      setCurrentPageNum(nextPage)
+    if (event.deltaY > 0) {
+      nextPage = Math.min(currentPageNum + 1, maxPage)
+    } else if (event.deltaY < 0) {
+      nextPage = Math.max(currentPageNum - 1, minPage)
     }
 
+    setIsScrolling(true)
+    mainRef.current?.scrollTo({
+      top: pageRefs.current[nextPage].offsetTop,
+      behavior: 'smooth',
+    })
+
+    const handleScrollEnd = () => {
+      if (mainRef.current) {
+        const currentScrollTop = mainRef.current.scrollTop
+        const targetScrollTop = pageRefs.current[nextPage].offsetTop
+        if (currentScrollTop === targetScrollTop) {
+          setIsScrolling(false)
+          mainRef.current.removeEventListener('scroll', handleScrollEnd)
+        }
+      }
+    }
+
+    mainRef.current?.addEventListener('scroll', handleScrollEnd)
+
+    setCurrentPageNum(nextPage)
+  }
+
+  useEffect(() => {
     mainRef.current?.addEventListener('wheel', handleWheel)
     return () => {
       mainRef.current?.removeEventListener('wheel', handleWheel)
     }
-  }, [mainRef.current, currentPageNum])
+  }, [currentPageNum, isScrolling])
 
   return (
     <main ref={mainRef} className='relative h-screen overflow-hidden'>
@@ -74,7 +85,7 @@ export const FullScrollPage = ({ children }: Props) => {
           className='h-full w-full'
         >
           {cloneElement(child as any, {
-            isCurrentPage: currentPageNum === index,
+            // isCurrentPage: currentPageNum === index,
           })}
         </div>
       ))}
