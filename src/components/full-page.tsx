@@ -35,6 +35,31 @@ export const FullScrollPage = ({ children }: Props) => {
     })
   }
 
+  useEffect(() => {
+    const handleWheel = (event: WheelEvent) => {
+      const maxPage = pageRefs.current.length - 1
+      const minPage = 0
+      let nextPage = currentPageNum
+
+      if (event.deltaY > 0) {
+        nextPage = Math.min(currentPageNum + 1, maxPage)
+      } else if (event.deltaY < 0) {
+        nextPage = Math.max(currentPageNum - 1, minPage)
+      }
+      mainRef.current?.scrollTo({
+        top: pageRefs.current[nextPage].offsetTop,
+        behavior: 'smooth',
+      })
+
+      setCurrentPageNum(nextPage)
+    }
+
+    mainRef.current?.addEventListener('wheel', handleWheel)
+    return () => {
+      mainRef.current?.removeEventListener('wheel', handleWheel)
+    }
+  }, [mainRef.current, currentPageNum])
+
   return (
     <main ref={mainRef} className='relative h-screen overflow-hidden'>
       {childrenArray.map((child, index) => (
