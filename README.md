@@ -8,6 +8,12 @@
 plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,4789,3197&p=9rQ6aveV1WIcvP5gjlqFI
 <img src="https://github.com/user-attachments/assets/4c3d1d69-cbae-47a8-ae69-7fa3b51a6927" width="50%" height="50%"/>
 
+### 기술
+- react
+- typescript
+- tailwind
+- shadcn/ui
+- framer-motion
 
 ### 도전적인 요소
 - 스크롤을 하면 페이지단위로 이동
