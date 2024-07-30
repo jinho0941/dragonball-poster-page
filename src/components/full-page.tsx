@@ -58,7 +58,10 @@ export const FullScrollPage = ({ children }: Props) => {
     const handleScrollEnd = () => {
       const currentScrollTop = mainRef.current?.scrollTop
       const targetScrollTop = pageRefs.current[nextPage].offsetTop
-      if (targetScrollTop === currentScrollTop) {
+      if (
+        currentScrollTop! - 1 < targetScrollTop &&
+        targetScrollTop < currentScrollTop! + 1
+      ) {
         setIsScrolling(false)
         mainRef.current?.removeEventListener('scroll', handleScrollEnd)
       }
@@ -76,6 +79,19 @@ export const FullScrollPage = ({ children }: Props) => {
     }
   }, [currentPageNum, isScrolling])
 
+  const handleResize = () => {
+    mainRef.current?.scrollTo({
+      top: pageRefs.current[currentPageNum].offsetTop,
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [currentPageNum])
+
   return (
     <main ref={mainRef} className='relative h-screen overflow-hidden'>
       {childrenArray.map((child, index) => (
@@ -89,7 +105,7 @@ export const FullScrollPage = ({ children }: Props) => {
           className='w-full h-full'
         >
           {cloneElement(child as any, {
-            // isCurrentPage: currentPageNum === index,
+            isCurrentPage: currentPageNum === index,
           })}
         </div>
       ))}
