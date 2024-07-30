@@ -31,7 +31,7 @@ plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,478
 초기에는 react element array를 만들어서 Props로 내리는 방식을 채택하였으나,   
 사용성이 좋지 않는 이유로 부모 컴포넌트가(full page) 자식 컴포넌트 갯수만큼 알아서 page를 만드는 방식으로 구현하고 싶었습니다.
 
-해당 기능을 구현하기 위해 react의 chilren을 받아서 각각의 child만큼 dom을 그리는 형태로 렌더를 시켰습니다.
+해당 기능을 구현하기 위해 react의 chilren을 받아서 각각의 child만큼 ref와 nav button을 만들었습니다.
 ```
 FullScrollPage = ({ children }: Props)
 ...
