@@ -56,9 +56,129 @@ const Content = () => {
   const [selectedGogetaTransformType, setSelectedGogetaTransformType] =
     useState<GogetaTransformType>(GogetaTransformType.BLUE)
 
-  const handleClickSonGoku = () => setSelectedCharacter(CharacterType.S)
-  const handleClickVegeta = () => setSelectedCharacter(CharacterType.V)
-  const handleClickGogeta = () => setSelectedCharacter(CharacterType.SV)
+  const characters = [
+    {
+      name: '손오공',
+      icon: '/s.png',
+      engName: 'songoku',
+      type: CharacterType.S,
+      onCharacterIconClick: () => setSelectedCharacter(CharacterType.S),
+      selectedTransformType: selectedSonGokuTransformType,
+      characterInfo: [
+        {
+          transformType: SonGokuTransformType.SAI,
+          transformName: '초사이어인',
+          imgSrc: '/s2.webp',
+          width: 750,
+          comment: '"넌 내 소중한 것들을 많이 빼앗아 갔어.. 절대로 용서 못해!"',
+          iconSrc: '/s-sai-icon.png',
+          onIconClick: () =>
+            setSelectedSonGokuTransformType(SonGokuTransformType.SAI),
+        },
+        {
+          transformType: SonGokuTransformType.GOD,
+          transformName: '초사이어인 갓',
+          imgSrc: '/s3.webp',
+          width: 550,
+          comment:
+            '"별은 부술 수 있어도, 단 한 명의 인간은 부술 수 없나보군..."',
+          iconSrc: '/s-god-icon.png',
+          onIconClick: () =>
+            setSelectedSonGokuTransformType(SonGokuTransformType.GOD),
+        },
+        {
+          transformType: SonGokuTransformType.BLUE,
+          transformName: '초사이어인 블루',
+          imgSrc: '/s4.webp',
+          width: 900,
+          comment: '"이제부터가 진정한 승부다."',
+          iconSrc: '/s-blue-icon.png',
+          onIconClick: () =>
+            setSelectedSonGokuTransformType(SonGokuTransformType.BLUE),
+        },
+      ],
+    },
+    {
+      name: '배지터',
+      icon: '/v.png',
+      engName: 'vegeta',
+      type: CharacterType.V,
+      onCharacterIconClick: () => setSelectedCharacter(CharacterType.V),
+      selectedTransformType: selectedVegetaTransformType,
+      characterInfo: [
+        {
+          transformType: VegetaTransformType.SAI,
+          transformName: '초사이어인',
+          imgSrc: '/v2.webp',
+          width: 650,
+          comment: '"움직이지 못하는 사이어인은 필요없다!"',
+          iconSrc: '/v-sai-icon.png',
+          onIconClick: () =>
+            setSelectedVegetaTransformType(VegetaTransformType.SAI),
+        },
+        {
+          transformType: VegetaTransformType.GOD,
+          transformName: '초사이어인 갓',
+          imgSrc: '/v3.webp',
+          width: 550,
+          comment: '"노력해도 절대 넘어설 수 없는 벽이 있다는 것을 보여주마."',
+          iconSrc: '/v-god-icon.png',
+          onIconClick: () =>
+            setSelectedVegetaTransformType(VegetaTransformType.GOD),
+        },
+        {
+          transformType: VegetaTransformType.BLUE,
+          transformName: '초사이어인 블루',
+          imgSrc: '/v4.webp',
+          width: 350,
+          comment: '"파괴할 수조차 없는 기술을 먹여주지."',
+          iconSrc: '/v-blue-icon.png',
+          onIconClick: () =>
+            setSelectedVegetaTransformType(VegetaTransformType.BLUE),
+        },
+      ],
+    },
+    {
+      name: '오지터',
+      icon: '/sv-normal-icon.png',
+      engName: 'Gogeta',
+      type: CharacterType.SV,
+      onCharacterIconClick: () => setSelectedCharacter(CharacterType.SV),
+      selectedTransformType: selectedGogetaTransformType,
+      characterInfo: [
+        {
+          transformType: GogetaTransformType.NORMAL,
+          transformName: '노말',
+          imgSrc: '/sv1.png',
+          width: 650,
+          comment: '"흠, 난 오지터. 오공과 베지터가 합체한 거라고."',
+          iconSrc: '/sv-normal-icon.png',
+          onIconClick: () =>
+            setSelectedGogetaTransformType(GogetaTransformType.NORMAL),
+        },
+        {
+          transformType: GogetaTransformType.SAI,
+          transformName: '초사이어인',
+          imgSrc: '/sv2.webp',
+          width: 650,
+          comment: '"30분이나 필요 없어. 손가락 하나면 충분하다!"',
+          iconSrc: '/sv-sai-icon.png',
+          onIconClick: () =>
+            setSelectedGogetaTransformType(GogetaTransformType.SAI),
+        },
+        {
+          transformType: GogetaTransformType.BLUE,
+          transformName: '초사이어인 블루',
+          imgSrc: '/sv3.webp',
+          width: 550,
+          comment: '"자, 이제 결판을 내자고."',
+          iconSrc: '/sv-blue-icon.png',
+          onIconClick: () =>
+            setSelectedGogetaTransformType(GogetaTransformType.BLUE),
+        },
+      ],
+    },
+  ]
 
   return (
     <div className='text-white'>
@@ -69,303 +189,80 @@ const Content = () => {
         className='absolute top-0 left-0 flex flex-col pt-3 '
       >
         <SidebarTitle />
-        <CharacterSelectSideBar
-          iconSrc='/s.png'
-          alt='songoku'
-          isSelected={selectedCharacter === CharacterType.S}
-          onIconClick={handleClickSonGoku}
-        />
-        <CharacterSelectSideBar
-          iconSrc='/v.png'
-          alt='vegeta'
-          isSelected={selectedCharacter === CharacterType.V}
-          onIconClick={handleClickVegeta}
-        />
-        <CharacterSelectSideBar
-          iconSrc='/sv-normal-icon.png'
-          alt='Gogeta'
-          isSelected={selectedCharacter === CharacterType.SV}
-          onIconClick={handleClickGogeta}
-        />
+        {characters.map((character) => (
+          <CharacterSelectSideBar
+            key={character.name}
+            iconSrc={character.icon}
+            alt={character.engName}
+            isSelected={character.type === selectedCharacter}
+            onIconClick={character.onCharacterIconClick}
+          />
+        ))}
       </motion.div>
-
-      {selectedCharacter === CharacterType.S && (
-        <section className='w-[650px] h-full mx-auto relative flex justify-center'>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className='absolute flex flex-col top-48 -left-40 '
-          >
-            <CharacterName name='손오공' engName='songoku' />
-          </motion.div>
-          <div className='absolute top-96 -left-40 '>
-            <TransformName
-              isSelected={
-                selectedSonGokuTransformType === SonGokuTransformType.SAI
-              }
-              name='초사이어인'
-            />
-            <TransformName
-              isSelected={
-                selectedSonGokuTransformType === SonGokuTransformType.GOD
-              }
-              name='초사이어인 갓'
-            />
-            <TransformName
-              isSelected={
-                selectedSonGokuTransformType === SonGokuTransformType.BLUE
-              }
-              name='초사이어인 블루'
-            />
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className='flex'
+      {characters.map((character) => (
+        <Fragment key={character.type}>
+          {selectedCharacter === character.type && (
+            <section
+              key={character.type}
+              className='w-[650px] h-full mx-auto relative flex justify-center'
             >
-              <TransformIcons
-                iconSrc='/s-sai-icon.png'
-                alt='초사이어인'
-                isSelected={
-                  selectedSonGokuTransformType === SonGokuTransformType.SAI
-                }
-                onIconClick={() =>
-                  setSelectedSonGokuTransformType(SonGokuTransformType.SAI)
-                }
-              />
-              <TransformIcons
-                iconSrc='/s-god-icon.png'
-                alt='초사이어인 갓'
-                isSelected={
-                  selectedSonGokuTransformType === SonGokuTransformType.GOD
-                }
-                onIconClick={() =>
-                  setSelectedSonGokuTransformType(SonGokuTransformType.GOD)
-                }
-              />
-              <TransformIcons
-                iconSrc='/s-blue-icon.png'
-                alt='초사이어인 블루'
-                isSelected={
-                  selectedSonGokuTransformType === SonGokuTransformType.BLUE
-                }
-                onIconClick={() =>
-                  setSelectedSonGokuTransformType(SonGokuTransformType.BLUE)
-                }
-              />
-            </motion.div>
-          </div>
-          <Character
-            isSelected={
-              selectedSonGokuTransformType === SonGokuTransformType.SAI
-            }
-            imgSrc='/s2.webp'
-            alt='초사이어인'
-            width={750}
-          />
-          <Character
-            isSelected={
-              selectedSonGokuTransformType === SonGokuTransformType.GOD
-            }
-            imgSrc='/s3.webp'
-            alt='초사이어인 갓'
-            width={550}
-          />
-          <Character
-            isSelected={
-              selectedSonGokuTransformType === SonGokuTransformType.BLUE
-            }
-            imgSrc='/s4.webp'
-            alt='초사이어인 블루'
-            width={900}
-          />
-        </section>
-      )}
-      {selectedCharacter === CharacterType.V && (
-        <section className='w-[650px] h-full mx-auto relative flex justify-center'>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className='absolute flex flex-col top-48 -left-40 '
-          >
-            <CharacterName name='배지터' engName='vegeta' />
-          </motion.div>
-          <div className='absolute top-96 -left-40 '>
-            <TransformName
-              isSelected={
-                selectedVegetaTransformType === VegetaTransformType.SAI
-              }
-              name='초사이어인'
-            />
-            <TransformName
-              isSelected={
-                selectedVegetaTransformType === VegetaTransformType.GOD
-              }
-              name='초사이어인 갓'
-            />
-            <TransformName
-              isSelected={
-                selectedVegetaTransformType === VegetaTransformType.BLUE
-              }
-              name='초사이어인 블루'
-            />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className='absolute flex flex-col top-48 -left-40 '
+              >
+                <CharacterName
+                  name={character.name}
+                  engName={character.engName}
+                />
+              </motion.div>
+              <div className='absolute top-96 -left-40 '>
+                {character.characterInfo.map((info) => (
+                  <div key={info.transformName}>
+                    <TransformName
+                      isSelected={
+                        info.transformType === character.selectedTransformType
+                      }
+                      name={info.transformName}
+                    />
+                  </div>
+                ))}
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className='flex'
-            >
-              <TransformIcons
-                iconSrc='/v-sai-icon.png'
-                alt='초사이어인'
-                isSelected={
-                  selectedVegetaTransformType === VegetaTransformType.SAI
-                }
-                onIconClick={() =>
-                  setSelectedVegetaTransformType(VegetaTransformType.SAI)
-                }
-              />
-              <TransformIcons
-                iconSrc='/v-god-icon.png'
-                alt='초사이어인 갓'
-                isSelected={
-                  selectedVegetaTransformType === VegetaTransformType.GOD
-                }
-                onIconClick={() =>
-                  setSelectedVegetaTransformType(VegetaTransformType.GOD)
-                }
-              />
-              <TransformIcons
-                iconSrc='/v-blue-icon.png'
-                alt='초사이어인 블루'
-                isSelected={
-                  selectedVegetaTransformType === VegetaTransformType.BLUE
-                }
-                onIconClick={() =>
-                  setSelectedVegetaTransformType(VegetaTransformType.BLUE)
-                }
-              />
-            </motion.div>
-          </div>
-          <Character
-            isSelected={selectedVegetaTransformType === VegetaTransformType.SAI}
-            imgSrc='/v2.webp'
-            alt='초사이어인'
-            width={650}
-          />
-          <Character
-            isSelected={selectedVegetaTransformType === VegetaTransformType.GOD}
-            imgSrc='/v3.webp'
-            alt='초사이어인 갓'
-            width={550}
-          />
-          <Character
-            isSelected={
-              selectedVegetaTransformType === VegetaTransformType.BLUE
-            }
-            imgSrc='/v4.webp'
-            alt='초사이어인 블루'
-            width={350}
-          />
-        </section>
-      )}
-
-      {selectedCharacter === CharacterType.SV && (
-        <section className='w-[650px] h-full mx-auto relative flex justify-center'>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className='absolute flex flex-col top-48 -left-40 '
-          >
-            <CharacterName name='오지터' engName='Gogeta' />
-          </motion.div>
-          <div className='absolute top-96 -left-40 '>
-            <TransformName
-              isSelected={
-                selectedGogetaTransformType === GogetaTransformType.NORMAL
-              }
-              name='노말'
-            />
-            <TransformName
-              isSelected={
-                selectedGogetaTransformType === GogetaTransformType.SAI
-              }
-              name='초사이어인'
-            />
-            <TransformName
-              isSelected={
-                selectedGogetaTransformType === GogetaTransformType.BLUE
-              }
-              name='초사이어인 블루'
-            />
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className='flex'
-            >
-              <TransformIcons
-                iconSrc='/sv-normal-icon.png'
-                alt='노말'
-                isSelected={
-                  selectedGogetaTransformType === GogetaTransformType.NORMAL
-                }
-                onIconClick={() =>
-                  setSelectedGogetaTransformType(GogetaTransformType.NORMAL)
-                }
-              />
-              <TransformIcons
-                iconSrc='/sv-sai-icon.png'
-                alt='초사이어인'
-                isSelected={
-                  selectedGogetaTransformType === GogetaTransformType.SAI
-                }
-                onIconClick={() =>
-                  setSelectedGogetaTransformType(GogetaTransformType.SAI)
-                }
-              />
-              <TransformIcons
-                iconSrc='/sv-blue-icon.png'
-                alt='초사이어인 블루'
-                isSelected={
-                  selectedGogetaTransformType === GogetaTransformType.BLUE
-                }
-                onIconClick={() =>
-                  setSelectedGogetaTransformType(GogetaTransformType.BLUE)
-                }
-              />
-            </motion.div>
-          </div>
-          <Character
-            isSelected={
-              selectedGogetaTransformType === GogetaTransformType.NORMAL
-            }
-            imgSrc='/sv1.png'
-            alt='노말'
-            width={650}
-          />
-          <Character
-            isSelected={selectedGogetaTransformType === GogetaTransformType.SAI}
-            imgSrc='/sv2.webp'
-            alt='초사이어인'
-            width={650}
-          />
-          <Character
-            isSelected={
-              selectedGogetaTransformType === GogetaTransformType.BLUE
-            }
-            imgSrc='/sv3.webp'
-            alt='초사이어인 블루'
-            width={550}
-          />
-        </section>
-      )}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  className='flex'
+                >
+                  {character.characterInfo.map((info) => (
+                    <TransformIcons
+                      key={info.iconSrc}
+                      iconSrc={info.iconSrc}
+                      alt={info.transformName}
+                      isSelected={
+                        info.transformType === character.selectedTransformType
+                      }
+                      onIconClick={info.onIconClick}
+                    />
+                  ))}
+                </motion.div>
+              </div>
+              {character.characterInfo.map((info) => (
+                <Character
+                  key={info.imgSrc}
+                  isSelected={
+                    info.transformType === character.selectedTransformType
+                  }
+                  imgSrc={info.imgSrc}
+                  alt={info.transformName}
+                  width={info.width}
+                />
+              ))}
+            </section>
+          )}
+        </Fragment>
+      ))}
     </div>
   )
 }
