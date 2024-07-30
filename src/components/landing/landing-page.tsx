@@ -1,23 +1,33 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 
 const LandingPage = ({ isCurrentPage }: any) => {
-  return (
-    <div className='h-full bg-slate-500'>{isCurrentPage && <Content />}</div>
-  )
-}
+  const videoRef = useRef<HTMLVideoElement>(null)
 
-const Content = () => {
+  useEffect(() => {
+    const videoElement = videoRef.current
+
+    if (!videoElement) return
+
+    if (!isCurrentPage) {
+      videoElement.pause()
+      return
+    }
+
+    videoElement.play().catch((error) => {
+      console.error('에러발생', error)
+    })
+  }, [isCurrentPage])
+
   return (
-    <div className='flex items-center h-full'>
-      <motion.div
-        initial={{ opacity: 0, x: 0 }}
-        animate={{ opacity: 1, x: 100 }}
-        transition={{
-          duration: 1,
-          delay: 1,
-        }}
-        className='w-40 h-40 bg-slate-800'
-      ></motion.div>
+    <div className='relative w-full h-full'>
+      <video
+        ref={videoRef}
+        src='/video1.mp4'
+        className='brightness-[25%] absolute w-full h-full object-cover'
+        loop
+        muted
+      />
+      {/* {isCurrentPage && <Content />} */}
     </div>
   )
 }
