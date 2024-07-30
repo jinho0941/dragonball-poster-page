@@ -1,6 +1,18 @@
 const CharacterInfoPage = ({ isCurrentPage }: any) => {
-  console.log(isCurrentPage)
-  return <div className='h-full bg-stone-500'>character page</div>
+  return (
+    <div className='h-full'>
+      <img
+        src={'/bg1.jpg'}
+        alt={'bg1'}
+        className='object-cover object-center w-full h-full brightness-50'
+      />
+      {isCurrentPage && <Content />}
+    </div>
+  )
+}
+
+const Content = () => {
+  return <div></div>
 }
 
 export default CharacterInfoPage
