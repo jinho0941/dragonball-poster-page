@@ -2,7 +2,10 @@
 
 ### deploy link: https://dragon-ball-poster.vercel.app/
 plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,4789,3197&p=9rQ6aveV1WIcvP5gjlqFI
-   
+
+### 프로젝트 시연 영상
+<img src="https://github.com/user-attachments/assets/21ff1fc0-78a3-4690-b464-2c804de5171b" width="50%" height="50%"/>
+
 ### 도전적인 요소
 - 스크롤을 하면 페이지단위로 이동
 - 페이지 이동간에 부드러운 에니메이션 작동
