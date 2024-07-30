@@ -1,6 +1,18 @@
 const StoryPage = ({ isCurrentPage }: any) => {
-  console.log(isCurrentPage)
-  return <div className='h-full bg-amber-500'>story page</div>
+  return (
+    <div className='relative h-full'>
+      <img
+        src={'/bg2.jpg'}
+        alt={'bg2'}
+        className='absolute object-cover object-center brightness-50'
+      />
+      {isCurrentPage && <Content />}
+    </div>
+  )
+}
+
+const Content = () => {
+  return <div></div>
 }
 
 export default StoryPage
