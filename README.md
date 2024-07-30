@@ -40,6 +40,7 @@ const childrenArray = React.Children.toArray(children)
 {childrenArray.map((child, index) => child)
 ```
 또한 자식 컴포넌트가 현재 페이지가 자신의 페이지인지 알아야지 렌더를 하기 때문에 isCurrnetPage라는 변수를 받아서 처리를 해줘야합니다.   
+
 전역 변수로 설정하여서 부모와 자식이 같은 상태값을 가지는 방법이 있지만 자식에서 props로 변수를 받는게 더 깔끔하고 사용성이 좋아보여,   
 아래와 같은 방법으로 자식에게 props를 내렸습니다.   
 ```
