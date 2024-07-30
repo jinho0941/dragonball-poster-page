@@ -287,10 +287,27 @@ reference: https://www.transformersmovie.com/synopsis/
 
 기획은 글자를 하나씩 보여주어서 해당 영상 장면처럼 근엄한 분위기를 주고싶었습니다.
 
-구현은 아래 사이트의 코드를 참조하였습니다.   
+구현은 아래 사이트 코드를 참조하였습니다.   
 site link: https://ui.aceternity.com/components/text-generate-effect
 
+### character info page
+reference: https://df.nexon.com/pg/characters/main#prev
 
+다음은 캐릭터 소개 페이지 입니다.  
+
+배치를 2번째로 한 이유는 스토리에 캐릭터들이 나오니 캐릭터를 먼저 알아야지 스토리를 이해하는데 맞겠다고 생각하여서 입니다.   
+
+오른쪽에는 전채 page를 움직이는 nav buttons가 있으니,  
+왼쪽에 character nav buttons를 배치하였습니다.  
+
+또한 중앙에 캐릭터를 배치하고, 각각 변신 폼이 있으니 마찬가지로 왼쪽에 form buttons를 배치하여,   
+자연스럽게 캐릭터 관련 nav를 왼쪽에서 관리하여 ux적으로 편리하게 설정하였습니다.
+
+대사는 해당 캐릭터를 잘 나타내는 짧은 대사로 오른쪽에 배치하여 공백을 채웠습니다.   
+
+전반적으로 캐릭터 이름과 캐릭터 이미지, 대사를 통해 대략적인 캐릭터의 성향을 파악할수 있도록 하였습니다.
+
+<img src="https://github.com/user-attachments/assets/3459ed52-dfc0-4ccf-b4de-78055525e078" width="50%" height="50%"/>
 
 
 
