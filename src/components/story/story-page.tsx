@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { StoryCard } from './story-card'
 import { motion } from 'framer-motion'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 const stories = [
   { imgSrc: '/story1.png', title: '브로리의 유배, 복수의 다짐' },
@@ -27,6 +28,20 @@ const Content = () => {
   const [currentIndex, setCurrentIndex] = useState(2)
   const length = stories.length
 
+  const showPrevImage = () => {
+    setCurrentIndex((index) => {
+      if (index === 0) return length - 1
+      return index - 1
+    })
+  }
+
+  const showNextImage = () => {
+    setCurrentIndex((index) => {
+      if (index === length - 1) return 0
+      return index + 1
+    })
+  }
+
   return (
     <div className='flex items-center w-full h-full'>
       <motion.div
@@ -45,6 +60,18 @@ const Content = () => {
               onClick={() => {}}
             />
           ))}
+          <button
+            onClick={showPrevImage}
+            className='absolute z-50 p-3 text-yellow-300 transition transform -translate-y-1/2 bg-black border-2 border-yellow-300 rounded-full -left-20 top-1/2 hover:bg-black/50 group active:outline'
+          >
+            <ArrowLeft className='w-6 h-6 transition-all group-hover:scale-125' />
+          </button>
+          <button
+            onClick={showNextImage}
+            className='absolute z-50 p-3 text-yellow-300 transition transform -translate-y-1/2 bg-black border-2 border-yellow-300 rounded-full -right-20 top-1/2 hover:bg-black/50 group active:outline'
+          >
+            <ArrowRight className='w-6 h-6 transition-all group-hover:scale-125' />
+          </button>
         </div>
       </motion.div>
     </div>
