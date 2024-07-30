@@ -244,6 +244,7 @@ useEffect(() => {
 ```
 
 하지만 또 버그가 생겼고 해당 버그는 아래 이미지 처럼 resize를 하는순간 첫 페이지에 top(0)으로 고정되어버리는 것입니다.
+
 <img src="https://github.com/user-attachments/assets/880c4e09-bc82-45ba-b0f3-8e64f2b6edc0" width="50%" height="50%"/>
 
 해당 버그는 치명적인 버그라 반드시 수정이 필요했고 디버깅을 하기 위해 상황을 분석해보았습니다.
