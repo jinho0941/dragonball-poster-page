@@ -68,8 +68,9 @@ export const FullScrollPage = ({ children }: Props) => {
     }
 
     mainRef.current?.addEventListener('scroll', handleScrollEnd)
-
-    setCurrentPageNum(nextPage)
+    setTimeout(() => {
+      setCurrentPageNum(nextPage)
+    }, 500)
   }
 
   useEffect(() => {
