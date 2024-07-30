@@ -6,6 +6,7 @@ import { CharacterName } from './character-name'
 import { TransformName } from './transform-name'
 import { TransformIcons } from './trnasform-icons'
 import { Character } from './character'
+import { CharacterComment } from './character-comment'
 
 const CharacterInfoPage = ({ isCurrentPage }: any) => {
   console.log(isCurrentPage)
@@ -259,6 +260,17 @@ const Content = () => {
                   width={info.width}
                 />
               ))}
+              <div className='absolute top-80 left-0 transform translate-x-[500px] flex flex-col'>
+                {character.characterInfo.map((info) => (
+                  <CharacterComment
+                    key={info.comment}
+                    isSelected={
+                      info.transformType === character.selectedTransformType
+                    }
+                    comment={info.comment}
+                  />
+                ))}
+              </div>
             </section>
           )}
         </Fragment>
