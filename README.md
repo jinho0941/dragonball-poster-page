@@ -309,26 +309,24 @@ reference: https://df.nexon.com/pg/characters/main#prev
 
 <img src="https://github.com/user-attachments/assets/3459ed52-dfc0-4ccf-b4de-78055525e078" width="50%" height="50%"/>
 
+### story page
+reference: https://universe.leagueoflegends.com/ko_KR/
 
+마지막 페이지로는 스토리 페이지 입니다.
 
+레퍼런스 처럼 케러셀로 스토리를 나열하고 버튼으로 index 조작이 가능하며,    
+이동 후에는 약간의 delay 후에 자연스럽게 image가 커지는 방식으로 깔끔하게 ui를 구성하였습니다.
 
+이는 간단하게 setTimeout으로 currentIndex가 변한 뒤 딜레이를 주어 업데이트 하는 방식으로 구현하였습니다.
+```
+useEffect(() => {
+ setTimeout(() => {
+   setDelayIndex(currentIndex)
+ }, 500)
+}, [currentIndex])
+```
+<img src="https://github.com/user-attachments/assets/eb5efc54-c1eb-4fc7-a722-d9cc8e08d434" width="50%" height="50%"/>
 
+여기까지가 project의 설명, 구현중 발생한 문제점, 해결 방식을 작성한 글이였습니다.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+읽어주셔서 진심으로 감사드립니다.
