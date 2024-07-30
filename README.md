@@ -270,41 +270,25 @@ useEffect(() => {
 <img src="https://github.com/user-attachments/assets/f32fda7f-f402-4ca5-8e69-56c9c497df57" width="50%" height="50%"/>
 
 이제 page단위의 scroll component를 완성하였으니 다음으로 기획을 바탕으로 메인 콘탠츠들을 작성하였습니다.   
+
 기획: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,4789,3197&p=9rQ6aveV1WIcvP5gjlqFI
 
+### landing page
+reference: https://www.transformersmovie.com/synopsis/
 
+랜딩 페이지는 사이트의 첫인상 이라고 생각하여 유저가 방문했을때 해당 영화의 하이라이트를 보여주어 영화를 보고싶게 만들게 하기위해,   
+영화의 하이라이트 부분을 배경으로 넣었습니다.
 
+<img src="https://github.com/user-attachments/assets/da3e6ff9-ceee-40d5-8566-23e93b97f6a8" width="50%" height="50%"/>
 
+그 다음으로 메인 콘탠츠들을 넣어 아래와 같이 포스터를 꾸몄습니다.
 
+<img src="https://github.com/user-attachments/assets/0c45cd62-0f2c-4a7c-baf8-ccceac0c3988" width="50%" height="50%"/>
 
+기획은 글자를 하나씩 보여주어서 해당 영상 장면처럼 근엄한 분위기를 주고싶었습니다.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+구현은 아래 사이트의 코드를 참조하였습니다.   
+site link: https://ui.aceternity.com/components/text-generate-effect
 
 
 
