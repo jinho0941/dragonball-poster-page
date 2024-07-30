@@ -21,8 +21,6 @@ plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,478
 - 사용성이 좋은 scroll page component
 - 현재 페이지만 render 하는 식으로 최적화
 
-기술: react, tailwind, shadcn/ui, framer motion
-
 우선 FullPage라는 컴포넌트를 부모 컴포넌트로 두고 바로 하위에 있는 자식 요소들은 각각 페이지에 해당하도록 설계를 하였습니다.   
 
 배열을 만들어서 prop으로 넘겨주는 방법도 좋지만 저는 조금더 사용성 측면에서 dom 하위요소들이 자동으로 개별 페이지가 되도록 원했습니다.   
