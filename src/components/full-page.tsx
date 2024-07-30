@@ -56,13 +56,11 @@ export const FullScrollPage = ({ children }: Props) => {
     })
 
     const handleScrollEnd = () => {
-      if (mainRef.current) {
-        const currentScrollTop = mainRef.current.scrollTop
-        const targetScrollTop = pageRefs.current[nextPage].offsetTop
-        if (currentScrollTop === targetScrollTop) {
-          setIsScrolling(false)
-          mainRef.current.removeEventListener('scroll', handleScrollEnd)
-        }
+      const currentScrollTop = mainRef.current?.scrollTop
+      const targetScrollTop = pageRefs.current[nextPage].offsetTop
+      if (targetScrollTop === currentScrollTop) {
+        setIsScrolling(false)
+        mainRef.current?.removeEventListener('scroll', handleScrollEnd)
       }
     }
 
@@ -88,14 +86,14 @@ export const FullScrollPage = ({ children }: Props) => {
               pageRefs.current[index] = el
             }
           }}
-          className='h-full w-full'
+          className='w-full h-full'
         >
           {cloneElement(child as any, {
             // isCurrentPage: currentPageNum === index,
           })}
         </div>
       ))}
-      <div className='flex flex-col space-y-4 fixed top-1/2 -translate-y-1/2 right-10 z-10'>
+      <div className='fixed z-10 flex flex-col space-y-4 -translate-y-1/2 top-1/2 right-10'>
         {childrenArray.map((_, index) => (
           <button
             key={index}
