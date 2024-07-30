@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { StoryCard } from './story-card'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -26,7 +26,14 @@ const StoryPage = ({ isCurrentPage }: any) => {
 
 const Content = () => {
   const [currentIndex, setCurrentIndex] = useState(2)
+  const [delayIndex, setDelayIndex] = useState(currentIndex)
   const length = stories.length
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDelayIndex(currentIndex)
+    }, 500)
+  }, [currentIndex])
 
   const showPrevImage = () => {
     setCurrentIndex((index) => {
@@ -56,6 +63,7 @@ const Content = () => {
               key={i}
               imgSrc={story.imgSrc}
               isCurrent={i === currentIndex}
+              isDelay={i === delayIndex}
               translateX={`${-100 * currentIndex}%`}
               onClick={() => {}}
             />
