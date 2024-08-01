@@ -98,3 +98,11 @@ export const characters = [
     ],
   },
 ]
+
+export const stories = [
+  { imgSrc: '/story1.png', title: '브로리의 유배, 복수의 다짐' },
+  { imgSrc: '/story2.png', title: '복수의 시작, 파라가스의 야망' },
+  { imgSrc: '/story3.png', title: '분노의 브로리 사이언인의 위기' },
+  { imgSrc: '/story4.png', title: '파라가스의 죽음, 각성 브로리' },
+  { imgSrc: '/story5.png', title: '오지터의 등장, 싸움의 끝' },
+]

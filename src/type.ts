@@ -27,3 +27,8 @@ export type Character = {
   type: CharacterType
   characterInfo: CharacterInfo[]
 }
+
+export type Story = {
+  imgSrc: string
+  title: string
+}
