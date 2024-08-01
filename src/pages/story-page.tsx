@@ -1,5 +1,5 @@
-import { BackgroundImg } from './background-img'
-import { Content } from './content'
+import { BackgroundImg } from '@/components/story/background-img'
+import { Content } from '@/components/story/content'
 
 const StoryPage = ({ isCurrentPage }: any) => {
   return (
