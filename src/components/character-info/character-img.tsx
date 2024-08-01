@@ -7,7 +7,7 @@ type Props = {
   width: number
 }
 
-export const Character = ({ isSelected, imgSrc, alt, width }: Props) => {
+export const CharacterImg = ({ isSelected, imgSrc, alt, width }: Props) => {
   return (
     isSelected && (
       <motion.div

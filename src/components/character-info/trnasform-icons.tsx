@@ -10,7 +10,7 @@ type Props = {
 export const TransformIcons = ({
   isSelected,
   onIconClick,
-  iconSrc: imgSrc,
+  iconSrc,
   alt,
 }: Props) => {
   return (
@@ -21,7 +21,7 @@ export const TransformIcons = ({
       )}
       onClick={onIconClick}
     >
-      <img src={imgSrc} alt={alt} className='object-cover h-full w-full' />
+      <img src={iconSrc} alt={alt} className='object-cover w-full h-full' />
     </div>
   )
 }
