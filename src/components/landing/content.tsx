@@ -5,7 +5,7 @@ import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-export const Content: React.FC = () => {
+export const Content = () => {
   return (
     <div className='relative z-50 flex flex-col items-center justify-center w-full h-full'>
       <TextGenerateEffect
