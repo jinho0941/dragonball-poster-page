@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
-import { StoryCard } from './story-card'
-import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import PageButton from './nav-button'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+
+import { StoryCard } from './story-card'
+import { NavButton } from './nav-button'
 
 const stories = [
   { imgSrc: '/story1.png', title: '브로리의 유배, 복수의 다짐' },
@@ -90,7 +91,7 @@ const Content = () => {
         className='absolute top-0 left-0 z-50 flex flex-col rounded-lg bg-black/50'
       >
         {stories.map((story, index) => (
-          <PageButton
+          <NavButton
             key={index}
             index={index}
             isActive={index === currentIndex}

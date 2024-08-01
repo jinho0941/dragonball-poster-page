@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
 import { ArrowDown } from 'lucide-react'
+import { motion } from 'framer-motion'
+
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { TextGenerateEffect } from '../ui/text-generate-effect'
 
 const LandingPage = ({ isCurrentPage }: any) => {
   const videoRef = useRef<HTMLVideoElement>(null)

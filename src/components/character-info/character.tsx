@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+
 type Props = {
   isSelected: boolean
   imgSrc: string

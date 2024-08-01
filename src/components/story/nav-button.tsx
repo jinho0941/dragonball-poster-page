@@ -1,13 +1,13 @@
 import { cn } from '@/lib/utils'
 
-interface Props {
+type Props = {
   index: number
   isActive: boolean
   title: string
   onClick: (index: number) => void
 }
 
-const PageButton = ({ index, isActive, title, onClick }: Props) => {
+export const NavButton = ({ index, isActive, title, onClick }: Props) => {
   return (
     <button
       className={cn(
@@ -20,5 +20,3 @@ const PageButton = ({ index, isActive, title, onClick }: Props) => {
     </button>
   )
 }
-
-export default PageButton

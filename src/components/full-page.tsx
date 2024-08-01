@@ -1,4 +1,4 @@
-import React, { cloneElement, useEffect, useRef, useState } from 'react'
+import { Children, cloneElement, useEffect, useRef, useState } from 'react'
 
 type Props = {
   children: React.ReactNode
@@ -7,10 +7,10 @@ type Props = {
 export const FullScrollPage = ({ children }: Props) => {
   const mainRef = useRef<HTMLDivElement>(null)
   const pageRefs = useRef<HTMLDivElement[]>([])
-  const [currentPageNum, setCurrentPageNum] = useState<number>(0)
-  const [isScrolling, setIsScrolling] = useState<boolean>(false)
+  const [currentPageNum, setCurrentPageNum] = useState(0)
+  const [isScrolling, setIsScrolling] = useState(false)
 
-  const childrenArray = React.Children.toArray(children)
+  const childrenArray = Children.toArray(children)
 
   useEffect(() => {
     pageRefs.current = pageRefs.current.slice(0, childrenArray.length)
@@ -21,7 +21,7 @@ export const FullScrollPage = ({ children }: Props) => {
         pageRefs.current[index] = pageRef
       }
     })
-  }, [childrenArray])
+  }, [])
 
   const handlePointClick = (pageNum: number) => {
     if (!mainRef.current) return

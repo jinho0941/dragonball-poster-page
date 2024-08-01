@@ -1,12 +1,13 @@
-import { motion } from 'framer-motion'
 import { Fragment, useState } from 'react'
+import { motion } from 'framer-motion'
+
 import { CharacterSelectSideBar } from './character-selecte-sidebar'
-import { SidebarTitle } from './sidebar-title'
+import { CharacterComment } from './character-comment'
+import { TransformIcons } from './trnasform-icons'
 import { CharacterName } from './character-name'
 import { TransformName } from './transform-name'
-import { TransformIcons } from './trnasform-icons'
+import { SidebarTitle } from './sidebar-title'
 import { Character } from './character'
-import { CharacterComment } from './character-comment'
 
 const CharacterInfoPage = ({ isCurrentPage }: any) => {
   console.log(isCurrentPage)
@@ -207,17 +208,10 @@ const Content = () => {
               key={character.type}
               className='w-[650px] h-full mx-auto relative flex justify-center'
             >
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className='absolute flex flex-col top-48 -left-40 '
-              >
-                <CharacterName
-                  name={character.name}
-                  engName={character.engName}
-                />
-              </motion.div>
+              <CharacterName
+                name={character.name}
+                engName={character.engName}
+              />
               <div className='absolute top-96 -left-40 '>
                 {character.characterInfo.map((info) => (
                   <div key={info.transformName}>

@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-interface Props {
+type Props = {
   imgSrc: string
   isCurrent: boolean
   isDelay: boolean
