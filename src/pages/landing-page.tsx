@@ -1,5 +1,5 @@
-import { BackgroundVideo } from './background-video'
-import { Content } from './content'
+import { BackgroundVideo } from '@/components/landing/background-video'
+import { Content } from '@/components/landing/content'
 
 const LandingPage = ({ isCurrentPage }: any) => {
   return (
