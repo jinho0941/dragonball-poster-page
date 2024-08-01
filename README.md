@@ -1,15 +1,26 @@
-## 드래곤볼 극장판을 홍보하기 위한 목적의 마케팅 페이지를 만드는 것이 목표입니다.
+## 드래곤볼 극장판을 홍보하기 위한 마케팅 페이지를 만드는 것이 목표입니다.
 
 ### deploy link: https://dragon-ball-poster.vercel.app/
+
+### 프로젝트 시연 영상
+<img src="https://github.com/user-attachments/assets/21ff1fc0-78a3-4690-b464-2c804de5171b" width="50%" height="50%"/>
+
 plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,4789,3197&p=9rQ6aveV1WIcvP5gjlqFI
-   
+
+<img src="https://github.com/user-attachments/assets/4c3d1d69-cbae-47a8-ae69-7fa3b51a6927" width="50%" height="50%"/>
+
+### 기술
+- react
+- typescript
+- tailwind
+- shadcn/ui
+- framer-motion
+
 ### 도전적인 요소
 - 스크롤을 하면 페이지단위로 이동
 - 페이지 이동간에 부드러운 에니메이션 작동
 - 사용성이 좋은 scroll page component
 - 현재 페이지만 render 하는 식으로 최적화
-
-기술: react, tailwind, shadcn/ui, framer motion
 
 우선 FullPage라는 컴포넌트를 부모 컴포넌트로 두고 바로 하위에 있는 자식 요소들은 각각 페이지에 해당하도록 설계를 하였습니다.   
 
@@ -20,7 +31,7 @@ plan link: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,478
 초기에는 react element array를 만들어서 Props로 내리는 방식을 채택하였으나,   
 사용성이 좋지 않는 이유로 부모 컴포넌트가(full page) 자식 컴포넌트 갯수만큼 알아서 page를 만드는 방식으로 구현하고 싶었습니다.
 
-해당 기능을 구현하기 위해 react의 chilren을 받아서 각각의 child만큼 dom을 그리는 형태로 렌더를 시켰습니다.
+해당 기능을 구현하기 위해 react의 chilren을 받아서 각각의 child만큼 ref와 nav button을 만들었습니다.
 ```
 FullScrollPage = ({ children }: Props)
 ...
@@ -29,6 +40,7 @@ const childrenArray = React.Children.toArray(children)
 {childrenArray.map((child, index) => child)
 ```
 또한 자식 컴포넌트가 현재 페이지가 자신의 페이지인지 알아야지 렌더를 하기 때문에 isCurrnetPage라는 변수를 받아서 처리를 해줘야합니다.   
+
 전역 변수로 설정하여서 부모와 자식이 같은 상태값을 가지는 방법이 있지만 자식에서 props로 변수를 받는게 더 깔끔하고 사용성이 좋아보여,   
 아래와 같은 방법으로 자식에게 props를 내렸습니다.   
 ```
@@ -172,7 +184,7 @@ useEffect(() => {
 ```
 resize event에 변할때마다 page offsetTop으로 이동시켜주는 로직을 작성하였습니다.   
 
-하지만 정상적으로 작동이 되지 않았고 때문에 디버깅하였고,  
+하지만 정상적으로 작동이 되지 않아 디버깅하였고,  
 문제는 resize event가 동작하지 않은게 원인이였습니다.
 
 ```
@@ -233,6 +245,7 @@ useEffect(() => {
 ```
 
 하지만 또 버그가 생겼고 해당 버그는 아래 이미지 처럼 resize를 하는순간 첫 페이지에 top(0)으로 고정되어버리는 것입니다.
+
 <img src="https://github.com/user-attachments/assets/880c4e09-bc82-45ba-b0f3-8e64f2b6edc0" width="50%" height="50%"/>
 
 해당 버그는 치명적인 버그라 반드시 수정이 필요했고 디버깅을 하기 위해 상황을 분석해보았습니다.
@@ -270,64 +283,63 @@ useEffect(() => {
 <img src="https://github.com/user-attachments/assets/f32fda7f-f402-4ca5-8e69-56c9c497df57" width="50%" height="50%"/>
 
 이제 page단위의 scroll component를 완성하였으니 다음으로 기획을 바탕으로 메인 콘탠츠들을 작성하였습니다.   
+
 기획: https://www.tldraw.com/s/v2_c_XNcsCXgvE_9spXKDDf0r_?v=-1018,-1197,4789,3197&p=9rQ6aveV1WIcvP5gjlqFI
 
+### landing page
+reference: https://www.transformersmovie.com/synopsis/
 
+랜딩 페이지는 사이트의 첫인상 이라고 생각하여 유저가 방문했을때 해당 영화의 하이라이트를 보여주어 영화를 보고싶게 만들게 하기위해,   
+영화의 하이라이트 부분을 배경으로 넣었습니다.
 
+<img src="https://github.com/user-attachments/assets/da3e6ff9-ceee-40d5-8566-23e93b97f6a8" width="50%" height="50%"/>
 
+그 다음으로 메인 콘탠츠들을 넣어 아래와 같이 포스터를 꾸몄습니다.
 
+<img src="https://github.com/user-attachments/assets/0c45cd62-0f2c-4a7c-baf8-ccceac0c3988" width="50%" height="50%"/>
 
+기획은 글자를 하나씩 보여주어서 해당 영상 장면처럼 근엄한 분위기를 주고싶었습니다.
 
+구현은 아래 사이트 코드를 참조하였습니다.   
+site link: https://ui.aceternity.com/components/text-generate-effect
 
+### character info page
+reference: https://df.nexon.com/pg/characters/main#prev
 
+다음은 캐릭터 소개 페이지 입니다.  
 
+배치를 2번째로 한 이유는 스토리에 캐릭터들이 나오니 캐릭터를 먼저 알아야지 스토리를 이해하는데 맞겠다고 생각하여서 입니다.   
 
+오른쪽에는 전채 page를 움직이는 nav buttons가 있으니,  
+왼쪽에 character nav buttons를 배치하였습니다.  
 
+또한 중앙에 캐릭터를 배치하고, 각각 변신 폼이 있으니 마찬가지로 왼쪽에 form buttons를 배치하여,   
+자연스럽게 캐릭터 관련 nav를 왼쪽에서 관리하여 ux적으로 편리하게 설정하였습니다.
 
+대사는 해당 캐릭터를 잘 나타내는 짧은 대사로 오른쪽에 배치하여 공백을 채웠습니다.   
 
+전반적으로 캐릭터 이름과 캐릭터 이미지, 대사를 통해 대략적인 캐릭터의 성향을 파악할수 있도록 하였습니다.
 
+<img src="https://github.com/user-attachments/assets/3459ed52-dfc0-4ccf-b4de-78055525e078" width="50%" height="50%"/>
 
+### story page
+reference: https://universe.leagueoflegends.com/ko_KR/
 
+마지막 페이지로는 스토리 페이지 입니다.
 
+레퍼런스 처럼 케러셀로 스토리를 나열하고 버튼으로 index 조작이 가능하며,    
+이동 후에는 약간의 delay 후에 자연스럽게 image가 커지는 방식으로 깔끔하게 ui를 구성하였습니다.
 
+이는 간단하게 setTimeout으로 currentIndex가 변한 뒤 딜레이를 주어 업데이트 하는 방식으로 구현하였습니다.
+```
+useEffect(() => {
+ setTimeout(() => {
+   setDelayIndex(currentIndex)
+ }, 500)
+}, [currentIndex])
+```
+<img src="https://github.com/user-attachments/assets/eb5efc54-c1eb-4fc7-a722-d9cc8e08d434" width="50%" height="50%"/>
 
+여기까지가 project의 설명, 구현중 발생한 문제점, 해결 방식을 작성한 글이였습니다.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+읽어주셔서 진심으로 감사드립니다.
