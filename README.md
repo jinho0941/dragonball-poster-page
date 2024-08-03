@@ -1,4 +1,4 @@
-## 드래곤볼 극장판을 홍보하기 위한 마케팅 페이지를 만드는 것이 목표입니다.
+## 여러 이벤트 핸들링을 사용해보기 위한 프로젝트.
 
 ### deploy link: https://dragon-ball-poster.vercel.app/
 
@@ -339,7 +339,3 @@ useEffect(() => {
 }, [currentIndex])
 ```
 <img src="https://github.com/user-attachments/assets/eb5efc54-c1eb-4fc7-a722-d9cc8e08d434" width="50%" height="50%"/>
-
-여기까지가 project의 설명, 구현중 발생한 문제점, 해결 방식을 작성한 글이였습니다.
-
-읽어주셔서 진심으로 감사드립니다.
